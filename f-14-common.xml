@@ -378,6 +378,14 @@
                 <name>Ctrl-v</name>
                 <desc>Back to Pilot's View or toggle Pilot's and RIO View.</desc>
             </key>
+            <key>
+                <name>Q</name>
+                <desc>Reset view</desc>
+            </key>
+            <key>
+                <name>S</name>
+                <desc>Toggle smoke</desc>
+            </key>
             <line>The menu Fuel and Sores is located in Menu > Tomcat Controls dropdown. (Hit F10 if needed)</line>
             <line>__________________________________________________</line>
             <line>Engine start: Ensure sufficient fuel and both engines cut off (glare panel), select R Crank from engine control panel (Next to throttles). At 20% RPM push in cut off for R engine.</line>
@@ -620,6 +628,7 @@
                     </VDI>
                 </controls>
                 <fx>
+                    <smoke type="int">0</smoke>
                     <burner type="int">0</burner>
                     <heat-blur-on type="bool">false</heat-blur-on>
                 </fx>
@@ -783,6 +792,7 @@
                     <armament>
                         <aim9>
                             <count type="int">0</count>
+                            <guidance type="string">heat</guidance>
                             <nearest-target type="int">-1</nearest-target>
                             <sound-on-off type="bool">false</sound-on-off>
                             <sound-volume type="double">0.12</sound-volume>
@@ -790,24 +800,33 @@
                             <!-- AIM-9L specs -->
                             <max-detection-rng-nm type="int">10</max-detection-rng-nm>
                             <!--FIXME: up to 10-16 MN with best conditions-->
-                            <fov-deg type="int">25</fov-deg>
+                            <fov-deg type="int">27</fov-deg>
                             <!-- seeker optical FOV -->
                             <detection-fov-deg type="int">60</detection-fov-deg>
                             <!-- Search pattern diameter (rosette scan) -->
-                            <track-max-deg type="int">110</track-max-deg>
+                            <track-max-deg type="int">134</track-max-deg>
                             <!-- Seeker max total angular rotation -->
-                            <max-g type="int">21</max-g>
+                            <max-g type="int">32</max-g>
                             <!-- In turn -->
-                            <thrust-lbs type="double">230</thrust-lbs>
-                            <!-- guess -->
-                            <thrust-duration-sec type="int">30</thrust-duration-sec>
+                            <thrust-lbs-stage-1 type="double">3821.75</thrust-lbs-stage-1><!-- guess -->
+                            <thrust-lbs-stage-2 type="double">0.0</thrust-lbs-stage-2>    <!-- authentic -->
+                            <stage-1-duration-sec type="double">4.0</stage-1-duration-sec><!-- guess -->
+                            <stage-2-duration-sec type="double">1.0</stage-2-duration-sec><!-- Aim-9L -->
+                            <self-destruct-time-sec type="double">43</self-destruct-time-sec><!-- guess -->
                             <!-- Mk.36 Mod.7,8 -->
                             <weight-launch-lbs>191</weight-launch-lbs>
                             <weight-warhead-lbs>20.8</weight-warhead-lbs>
-                            <drag-coeff type="double">0.05</drag-coeff>
+                            <drag-coeff type="double">0.5</drag-coeff>
                             <!-- guess -->
-                            <drag-area type="double">0.043</drag-area>
+                            <drag-area type="double">0.143</drag-area>
                             <!-- sq ft -->
+                            <seeker-angular-speed-dps>30</seeker-angular-speed-dps><!-- deg/sec guess-->
+                            <loft-altitude>0</loft-altitude><!-- in stage 1 it will attempt to climb to this altitude -->
+                            <min-speed-for-guiding-mach type="double">0.8</min-speed-for-guiding-mach>
+                            <arming-time-sec type="double">1.4</arming-time-sec>
+                            <rail type="bool">true</rail>
+                            <rail-length-m type="double">2.667</rail-length-m><!-- 16S210 AIM-9 Missile Launcher -->
+                            <rail-point-forward type="bool">true</rail-point-forward>
                         </aim9>
                         <aim54>
                             <!--Based on values from Fabien's loading_missiles:
@@ -908,6 +927,7 @@
                         </aim7>
                         <launch-light type="bool">false</launch-light>
                         <system-running type="bool">false</system-running>
+                        <mp-messaging type="bool">false</mp-messaging>
                     </armament>
                     <afcs>
                         <engaged type="bool">false</engaged>
@@ -1091,11 +1111,12 @@
                 <int n="8" type="int">0</int>
                 <!--afterburner right-->
                 <int n="9" type="int">0</int>
+                <!--smoke-->
+                <int n="10" alias="/sim/model/f-14b/fx/smoke"/>
                 <!-- external weapons layout and pylons details -->
                 <string n="0" type="string"></string>
                 <!-- mp-network -->
-                <string n="1" type="string">xxx</string>
-                <!-- instruments -->
+                <string n="1" type="string">xxx</string> <!-- instruments -->
                 <!-- <string n="2" type="string">50</string>      free -->
             </generic>
             <!-- set default aircaft model to us; I find it hard to see the glider. -->
@@ -1129,7 +1150,7 @@
                         <label>Repair Airframe</label>
                         <binding>
                             <command>nasal</command>
-                            <script>f14.fixAirframe();</script>
+                            <script>f14.fixAirframe();armament.ct("rp");</script>
                         </binding>
                     </item>
                     <item n="1">
@@ -1697,9 +1718,79 @@
 
     <controls>
         <windshield-heat type="int">1</windshield-heat>
-
+        
         <armament>
             <trigger type="bool">false</trigger>
+            <station n="1">
+                <offsets>
+                    <x-m>0.4795</x-m>
+                    <y-m>-3.6717</y-m>
+                    <z-m>-1.0600</z-m>
+                </offsets>
+            </station>
+            <station n="2">
+                <offsets>
+                    <x-m>0.4795</x-m>
+                    <y-m>-3.2800</y-m>
+                    <z-m>-1.5700</z-m>
+                </offsets>
+            </station>
+            <station n="3">
+                <offsets>
+                    <x-m>0</x-m>
+                    <y-m>0</y-m>
+                    <z-m>0</z-m>
+                </offsets>
+            </station>
+            <station n="4">
+                <offsets>
+                    <x-m>0</x-m>
+                    <y-m>0</y-m>
+                    <z-m>0</z-m>
+                </offsets>
+            </station>
+            <station n="5">
+                <offsets>
+                    <x-m>0</x-m>
+                    <y-m>0</y-m>
+                    <z-m>0</z-m>
+                </offsets>
+            </station>
+            <station n="6">
+                <offsets>
+                    <x-m>0</x-m>
+                    <y-m>0</y-m>
+                    <z-m>0</z-m>
+                </offsets>
+            </station>
+            <station n="7">
+                <offsets>
+                    <x-m>0</x-m>
+                    <y-m>0</y-m>
+                    <z-m>0</z-m>
+                </offsets>
+            </station>
+            <station n="8">
+                <offsets>
+                    <x-m>0</x-m>
+                    <y-m>0</y-m>
+                    <z-m>0</z-m>
+                </offsets>
+            </station>
+            <station n="9">
+                <offsets>
+                    <x-m>0.4795</x-m>
+                    <y-m>3.2800</y-m>
+                    <z-m>-1.5700</z-m>
+                </offsets>
+            </station>
+            <station n="10">
+                <offsets>
+                    <x-m>0.4795</x-m>
+                    <y-m>3.6717</y-m>
+                    <z-m>-1.0600</z-m>
+                </offsets>
+            </station>
         </armament>
         <lighting>
             <instruments-norm type="double">0</instruments-norm>
@@ -1763,17 +1854,6 @@
                     <script>f14_afcs.afcs_altitude_engage_toggle();</script>
                 </binding>
             </key>
-
-<!--
-            <key n="4">
-                <name>CTRL-d</name>
-                <desc>DLC toggle</desc>
-                <binding>
-                    <command>nasal</command>
-                    <script>f14.toggleDLC();</script>
-                </binding>
-            </key>
--->
 
             <key n="8">
                 <name>CTRL-h</name>
@@ -1959,7 +2039,8 @@
                     </script>
                 </binding>
             </key>
-           <key n="77">
+
+            <key n="77">
                 <name>M</name>
                 <desc>Toggle AIM-9 selection</desc>
                 <binding>
@@ -1968,13 +2049,30 @@
                 </binding>
             </key>
 
-
+            <key n="81">
+                <name>Q</name>
+                <desc>Reset view</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>f14.resetView();</script>
+                </binding>
+            </key>
+            
             <key n="82">
                 <name>R</name>
                 <desc>Increase Radar Range</desc>
                 <binding>
                     <command>nasal</command>
                     <script>awg_9.range_control(1);</script>
+                </binding>
+            </key>
+
+            <key n="83">
+                <name>S</name>
+                <desc>smoke</desc>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>sim/model/f-14b/fx/smoke</property>
                 </binding>
             </key>
 
@@ -2035,6 +2133,20 @@
                 </binding>
             </key>
 
+            <key n="109">
+                <name>m</name>
+                <desc>Cycle Stick Weapon Mode Selector</desc>
+                <binding>
+                    <command>property-adjust</command>
+                    <property>sim/model/f-14b/controls/armament/stick-selector</property>
+                    <step>1</step>
+                    <min>0</min>
+                    <max>4</max>
+                    <repeat>false</repeat>
+                    <wrap>true</wrap>
+                </binding>
+            </key>
+
             <key n="111">
                 <name>o</name>
                 <desc>Toggle arrester hook</desc>
@@ -2061,19 +2173,6 @@
                 </binding>
             </key>
 
-            <key n="109">
-                <name>m</name>
-                <desc>Cycle Stick Weapon Mode Selector</desc>
-                <binding>
-                    <command>property-adjust</command>
-                    <property>sim/model/f-14b/controls/armament/stick-selector</property>
-                    <step>1</step>
-                    <min>0</min>
-                    <max>4</max>
-                    <repeat>false</repeat>
-                    <wrap>true</wrap>
-                </binding>
-            </key>
             <key n="121">
                 <name>y</name>
                 <desc>Next target select</desc>
@@ -2112,6 +2211,50 @@
                 </binding>
             </key>
 
+            <key n="21">
+              <name>Ctrl-U</name>
+              <desc>[Cheat] Add 1000ft of emergency altitude</desc>
+              <binding>
+               <command>property-adjust</command>
+               <property>/position/altitude-ft</property>
+               <step type="double">1000.0</step>
+              </binding>
+              <binding>
+               <command>property-assign</command>
+               <property>/sim/startup/onground</property>
+               <value type="bool">false</value>
+              </binding>
+              <binding>
+               <command>nasal</command>
+               <script>armament.ct("c-u")</script>
+              </binding>
+             </key>
+
+             <!--<key n="97"> already overwritten
+              <name>a</name>
+              <desc>Increase speed-up</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>controls.speedup(1);</script>
+                </binding>
+                <binding>
+               <command>nasal</command>
+               <script>armament.ct("a")</script>
+              </binding>
+             </key>-->
+
+             <key n="65">
+              <name>A</name>
+              <desc>Decrease speed-up</desc>
+              <binding>
+                <command>nasal</command>
+                <script>controls.speedup(-1);</script>
+              </binding>
+              <binding>
+               <command>nasal</command>
+               <script>armament.ct("a")</script>
+              </binding>
+             </key>
         </keyboard>
     </input>
 
@@ -2138,6 +2281,76 @@
             </frequencies>
         </nav>
     </instrumentation>
+
+    <payload>                        
+        <armament>
+            <models type="string">Aircraft/f-14b/Models/Stores/</models>
+            <msg type="bool">false</msg>
+            <damage type="bool">false</damage>
+            <aim-9>             <!-- aim-9L sidewinder -->
+                <sound-on-off type="bool">false</sound-on-off>
+                <sound-volume type="double">0.0</sound-volume>
+                <vol-search type="double">0.150</vol-search>
+                <vol-track type="double">0.35</vol-track>
+                <vol-track-weak type="double">0.20</vol-track-weak>
+                <guidance type="string">heat</guidance>                       <!-- heat, radar or semi-radar -->
+                <all-aspect type="bool">true</all-aspect>                     <!-- all or rear-only -->
+                <max-fire-range-nm type="double">9.7</max-fire-range-nm> <!-- source -->
+                <FCS-field-deg type="int">27</FCS-field-deg>                              <!-- source -->
+                <seeker-field-deg type="int">134</seeker-field-deg>                 <!-- source -->
+                <max-g type="int">32</max-g>                                  <!-- source -->
+                <thrust-lbf-stage-1 type="double">2660</thrust-lbf-stage-1><!-- authentic -->
+                <thrust-lbf-stage-2 type="double">0.0</thrust-lbf-stage-2>    <!-- authentic -->
+                <stage-1-duration-sec type="double">5.23</stage-1-duration-sec><!-- authentic -->
+                <stage-2-duration-sec type="double">0.0</stage-2-duration-sec><!-- authentic -->
+                <weight-launch-lbs type="double">188</weight-launch-lbs>      <!-- authentic -->
+                <weight-warhead-lbs type="double">20.8</weight-warhead-lbs>   <!-- authentic -->
+                <drag-coeff type="double">0.5</drag-coeff>                   <!-- guesstimate -->
+                <drag-area type="double">0.143</drag-area>                    <!-- sq ft -->
+                <searcher-beam-width type="double">2.0</searcher-beam-width>  <!-- guess -->
+                <arming-time-sec type="double">1.4</arming-time-sec>          <!-- guess -->
+                <min-speed-for-guiding-mach type="double">0.8</min-speed-for-guiding-mach><!-- guess -->
+                <self-destruct-time-sec type="double">50</self-destruct-time-sec>         <!-- guess -->
+                <seeker-angular-speed-dps type="double">30</seeker-angular-speed-dps><!-- deg/sec guess-->
+                <loft-altitude>0</loft-altitude>
+                <min-fire-range-nm type="double">0.2</min-fire-range-nm>
+                <rail type="bool">true</rail>
+                <rail-length-m type="double">2.667</rail-length-m><!-- 16S210 AIM-9 Missile Launcher -->
+                <rail-point-forward type="bool">true</rail-point-forward>
+                <class type="string">A/A</class>
+                <fire-msg>Fox 2</fire-msg>
+            </aim-9>
+            <aim-54><!-- aim-54 Phoenix - pretty much just a copy of Mirage's need tuning badly -->
+                <sound-on-off type="bool">false</sound-on-off>
+                <sound-volume type="double">0.0</sound-volume>
+                <vol-search type="double">0.0</vol-search>
+                <vol-track type="double">0.35</vol-track>
+                <vol-track-weak type="double">0.20</vol-track-weak>
+                <guidance type="string">radar</guidance>                       <!-- heat, radar or semi-radar -->
+                <all-aspect type="bool">true</all-aspect>                     <!-- all or rear-only -->
+                <max-fire-range-nm type="double">100</max-fire-range-nm> <!-- source -->
+                <FCS-field-deg type="int">25</FCS-field-deg>                              
+                <seeker-field-deg type="int">110</seeker-field-deg>                 
+                <max-g type="int">30</max-g>
+                <thrust-lbf-stage-1 type="double">41611</thrust-lbf-stage-1>
+                <thrust-lbf-stage-2 type="double">0.0</thrust-lbf-stage-2>    
+                <stage-1-duration-sec type="double">81</stage-1-duration-sec>
+                <stage-2-duration-sec type="double">0.0</stage-2-duration-sec>
+                <weight-launch-lbs type="double">905</weight-launch-lbs>      
+                <weight-warhead-lbs type="double">135</weight-warhead-lbs>   
+                <drag-coeff type="double">0.5</drag-coeff>                   <!-- guesstimate -->
+                <drag-area type="double">0.234</drag-area>                    <!-- sq ft -->
+                <arming-time-sec type="double">2</arming-time-sec>          
+                <min-speed-for-guiding-mach type="double">0.95</min-speed-for-guiding-mach>
+                <self-destruct-time-sec type="double">160</self-destruct-time-sec>         
+                <loft-altitude>100000</loft-altitude>
+                <min-fire-range-nm type="double">0.4</min-fire-range-nm>
+                <rail type="bool">false</rail>
+                <class type="string">A/A</class>
+                <fire-msg>Fox 3</fire-msg>
+            </aim-54>
+        </armament>
+    </payload>
 
     <nasal>
         <aar>
@@ -2187,8 +2400,9 @@
             <file>Aircraft/f-14b/Nasal/fuel-system.nas</file>
             <file>Aircraft/f-14b/Nasal/weapons.nas</file>
             <file>Aircraft/f-14b/Nasal/electrics.nas</file>
-            <file>Aircraft/f-14b/Nasal/bombable_integration.nas</file>
+            <!--<file>Aircraft/f-14b/Nasal/bombable_integration.nas</file>-->
             <file>Aircraft/f-14b/Nasal/fox2.nas</file>
+            <file>Aircraft/f-14b/Nasal/crash-and-stress.nas</file>
         </f14>
         <f14_hud>
             <file>Aircraft/f-14b/Nasal/hud.nas</file>
@@ -2203,9 +2417,16 @@
         <f14_afcs>
             <file>Aircraft/f-14b/Nasal/afcs.nas</file>
         </f14_afcs>
+        <armament>
+            <file>Aircraft/f-14b/Nasal/fox2.nas</file>
+            <file>Aircraft/f-14b/Nasal/damage.nas</file>
+        </armament>
         <environment>
             <file>Aircraft/f-14b/Nasal/environment.nas</file>
         </environment>
+        <blackout>
+            <file>Aircraft/f-14b/Nasal/blackout.nas</file>
+        </blackout>
     </nasal>
 
 </PropertyList>
