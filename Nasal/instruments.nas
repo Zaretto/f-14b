@@ -37,6 +37,8 @@ var carrier_y_offset = 0;
 var carrier_z_offset = 0;
 aircraft.ownship_pos = geo.Coord.new();
 
+setprop("/fdm/jsbsim/systems/hook/arrestor-wire-engaged-hook",0); # FG 2018.1 has improved hook handling; this is for compatibility; 
+
 aircraft.data.add(VtcRadialDeg, TcModeSwitch);
 
 
