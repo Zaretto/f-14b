@@ -2493,6 +2493,8 @@
     
     <nasal>
         <notifications>
+            <file>Aircraft/f-14b/Nasal/AircraftEventNotification.nas</file>
+            <file>Aircraft/f-14b/Nasal/ArmamentNotification.nas</file>
             <file>Aircraft/f-14b/Nasal/M_frame_notification.nas</file>
         </notifications>
       <aar>
