@@ -219,7 +219,7 @@ setlistener("/controls/flight/wingsweep-guard", func(v) {
                 if (getprop("/controls/flight/wing-sweep-cmd") >= 1) {
                     setprop("/fdm/jsbsim/fcs/wing-sweep-mode",1);
                     currentSweepMode = 4;
-                    getprop("/controls/flight/wing-sweep-cmd",1.2);
+                    setprop("/controls/flight/wing-sweep-cmd",1.2);
                 }
             } else {
                 if (currentSweepMode == 4) {
