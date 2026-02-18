@@ -5,6 +5,12 @@ A high-fidelity simulation of the Grumman F-14 Tomcat for FlightGear, featuring 
 **Repository:** https://github.com/Zaretto/f-14b
 **Documentation:** http://zaretto.com/f-14
 **Issues:** https://github.com/Zaretto/f-14b/issues
+**Quick Reference:** [HELP.md](HELP.md) | **Weapons Guide:** [WEAPONS.md](WEAPONS.md)
+
+**Technical Documentation:**
+- [RADAR.md](RADAR.md) - AWG-9 radar system
+- [WEAPONS_SYSTEM.md](WEAPONS_SYSTEM.md) - Missile guidance and fire control
+- [EMESARY.md](EMESARY.md) - Inter-object communication system
 
 ## Project History
 
@@ -38,6 +44,135 @@ Development began in August 2014 with the goal of creating an accurate F-14 simu
 
 - **F-14A** - Pratt & Whitney TF30-P-414 engines; susceptible to compressor stall at high alpha/sideslip; underpowered for the airframe
 - **F-14B** - General Electric F110-GE-400 engines; improved power and reliability
+
+---
+
+## Installation
+
+1. Download or clone the repository
+2. Place the `f-14b` folder in your FlightGear `Aircraft` directory
+3. Launch FlightGear and select "F-14B" or "F-14A" from the aircraft menu
+
+**Requirements:** FlightGear 2017.3 or later
+
+---
+
+## Quick Start
+
+### Engine Start
+1. Pull the fuel cutoff valves (yellow striped handles on glareshield)
+2. Select CRANK (with or without external air)
+3. Once N2 reaches 18%, hydraulics power the backup electrical generator
+4. Cockpit instruments will illuminate
+
+### Flying Notes
+- The realistic aerodynamic model makes the aircraft harder to fly than simplified models
+- Watch AOA in high-G turns to avoid stalling wings or control surfaces
+- Hydraulics and electrics require engine power or external power
+- Loss of engines at low speed means loss of flight controls
+
+---
+
+## Keyboard Shortcuts
+
+### Flight Controls
+| Key | Function |
+|-----|----------|
+| Home / End | Elevator trim increase/decrease |
+| f / F (Shift-f) | Flaps down/up |
+| < / > | Wing sweep forward/aft |
+| = | Wing sweep auto mode |
+| o | Toggle arrester hook |
+
+### Autopilot & SAS
+| Key | Function |
+|-----|----------|
+| Ctrl-t | Toggle AFCS Attitude Mode |
+| Ctrl-a | Enable AFCS Altitude Mode |
+| * | Engage AFCS Altitude Mode |
+| Ctrl-h | Enable AFCS Heading Mode |
+| Ctrl-p | Toggle Pitch SAS |
+| Ctrl-k | Toggle Roll SAS |
+| Ctrl-l | Toggle Yaw SAS |
+
+### Landing
+| Key | Function |
+|-----|----------|
+| Ctrl-S | Toggle APC (Approach Power Compensator) |
+| Ctrl-d | Stick DLC/Chaff switch |
+| l / n | DLC thumbwheel fore/aft |
+| Ctrl-y | Toggle ground spoilers armed |
+
+### Radar
+| Key | Function |
+|-----|----------|
+| Shift-E / Shift-R | Radar range decrease/increase |
+| q | Toggle Radar Standby Mode |
+| Ctrl-n | Toggle Radar Mode (Pulse/TWS) |
+| h | Cycle HSD modes (radar/compass/ECM) |
+| y | Next target |
+| Shift-y | Radar azimuth coverage |
+| i / I (Shift-i) | Radar up/down |
+| D (Shift-d) | Radar elevation coverage |
+| r | STT Lock |
+| U (Shift-u) | Undesignate |
+| d | Pilot automatic lockon mode |
+
+### Weapons
+| Key | Function |
+|-----|----------|
+| Ctrl-w | Cycle Master Arm modes |
+| m | Cycle Stick Weapon Selector |
+| Shift-m | Cycle pylons selection |
+| e | Fire M61A1 Vulcan or selected weapon |
+
+### Countermeasures & Defensive
+| Key | Function |
+|-----|----------|
+| Ctrl-q | Release chaff/flare |
+| Ctrl-e | Ignore selected MP pilots |
+
+### Views & Miscellaneous
+| Key | Function |
+|-----|----------|
+| Ctrl-v | Toggle Pilot/RIO view |
+| Q (Shift-q) | Reset view |
+| c | Toggle canopy and ladder |
+| u | Toggle refueling probe |
+| Ctrl-o | Toggle wing oversweep (ground only) |
+| S (Shift-s) | Toggle smoke |
+| F6 | Eject |
+
+### GCI (Ground Control Intercept)
+| Key | Function |
+|-----|----------|
+| Ctrl-1 | Picture request |
+| Ctrl-2 | Bogey Dope request |
+| Ctrl-3 | Cutoff request |
+
+See [HELP.md](HELP.md) for detailed operational procedures.
+
+---
+
+## Liveries
+
+13 paint schemes available:
+
+| Livery | Description |
+|--------|-------------|
+| VF-1 WolfPack | Pacific Fleet fighter squadron |
+| VF-2 Bounty Hunters | Classic Navy squadron |
+| VF-24 Rage 212 | Fighting Renegades |
+| VF-101 Grim Reapers | Fleet Replacement Squadron |
+| VF-102 Diamondbacks | Atlantic Fleet |
+| VF-103 (Santa) | Jolly Rogers holiday special |
+| Jolly Rogers | VF-84/VF-103 skull and crossbones |
+| Checkmates | VF-211 |
+| Swordsmen | VF-32 |
+| Red Rippers | VF-11 |
+| Top Gun | NFWS adversary |
+| NSAWC Aggressor | Naval Strike and Air Warfare Center |
+| NASA | NASA Dryden research aircraft (N834NA) |
 
 ---
 
@@ -160,7 +295,7 @@ Key systems implemented in Nasal (loaded in dependency order):
 
 ### Communication Patterns
 
-- **Emesary** - Event notification for multiplayer-compatible weapons, damage, and system state
+- **Emesary** - Publish-subscribe notification system enabling decoupled communication between classes that have no knowledge of each other. Used extensively for weapons, damage, radar contacts, and system state. Notifications can be bridged across multiplayer. See [EMESARY.md](EMESARY.md) for details.
 - **Property Tree** - FlightGear's central data store; all state flows through properties
 - **Listeners** - Reactive updates via property change callbacks
 
@@ -183,6 +318,46 @@ When damage is enabled:
 
 - **ACLS** (Automatic Carrier Landing System) - Awaiting sufficient documentation
 - **RATS** (Reduced Thrust Arresting System) for GE engines
+
+---
+
+## Known TODOs and Future Work
+
+The following items are marked as TODO in the codebase for future development:
+
+### Flight Control System
+- Maneuver flaps via thumbwheel (f-14-fcs.xml)
+- Autopilot emergency disengage paddle (cadc.nas)
+- DLC weight-on-wheels condition (spoilers.nas)
+
+### Fuel & Engine Systems
+- Engine fuel shutoff emergency handles (fuel-system.nas)
+- External stores WOW requirement (ext_stores.nas)
+
+### Weapons System (fox2.nas)
+- Side wind compensation for rail heading offset
+- Flare/chaff handling improvements
+- Seeker FOV pattern checking
+- High elevation math improvements
+- Horizon stabilized uncaged mode
+
+### Radar System (awg-9.nas, radar-system.nas)
+- Scan visibility check interval optimization
+- Sweep line visual glitch when changing azimuth scan field
+- RWR alert display override
+- Chaff detection refinement
+- Radar code partitioning (avoid running all 18 contacts at once)
+- Vectorized field implementation
+- Contact scanning method rework
+
+### Damage System (damage.nas)
+- Hash lookup for weapon models
+- SAM/ship callsign identification
+
+### Awaiting FlightGear Core Fixes
+Several `coord.alt()` calls have workarounds pending upstream FlightGear fixes in:
+- fox2.nas (missile coordinates)
+- radar-system.nas (aircraft/contact positions)
 
 ---
 
