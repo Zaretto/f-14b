@@ -88,7 +88,8 @@ var set_ext_tank_selected = func(v) {
 
 var emerg_jettison = func {
 	# will jettison all A/G weapons plus fuel tanks, AIM-7 and AIM-54.
-	# TODO: require no WOW.
+	# Require no weight on wheels.
+	if (!wow) return;
 	var weap = pylons.pylon3.getWeapons();
 	if (weap != nil and size(weap)) {
 		setprop("controls/armament/station[2]/jettison-all", 1);
