@@ -5,16 +5,66 @@ A high-fidelity simulation of the Grumman F-14 Tomcat for FlightGear, featuring 
 **Repository:** https://github.com/Zaretto/f-14b
 **Documentation:** http://zaretto.com/f-14
 **Issues:** https://github.com/Zaretto/f-14b/issues
-**Quick Reference:** [HELP.md](HELP.md) | **Weapons Guide:** [WEAPONS.md](WEAPONS.md)
+**Quick Reference:** [HELP.md](documentation/HELP.md) | **Weapons Guide:** [WEAPONS.md](documentation/WEAPONS.md)
 
 **Technical Documentation:**
-- [RADAR.md](RADAR.md) - AWG-9 radar system
-- [WEAPONS_SYSTEM.md](WEAPONS_SYSTEM.md) - Missile guidance and fire control
-- [EMESARY.md](EMESARY.md) - Inter-object communication system
+- [Aerodynamics](documentation/AERODYNAMICS.md) - Wind tunnel data sources and aerodynamic model 
+- [Aerodynamic Coefficients](documentation/COEFFICIENT_BUILDUP.md) - Detailed aerodynamic coefficient buildup methodology
+- [APC](documentation/APC.md) - Approach Power Compensator
+- [CADC](documentation/CADC.md) - Central Air Data Computer and maneuvering flaps/slats
+- [Catapult](documentation/CATAPULT.md) - Catapult launch system
+- [Electrical](documentation/ELECTRICAL.md) - Electrical power system
+- [Hydraulics](documentation/HYDRAULICS.md) - Hydraulic system
+- [Landing Gear](documentation/LANDING_GEAR.md) - Landing gear and kneel system
+- [Radar](documentation/RADAR.md) - AWG-9 radar system
+- [Weapons](documentation/WEAPONS_SYSTEM.md) - Missile guidance and fire control
+- [Emesary](documentation/EMESARY.md) - Inter-object communication system
+- [FlightGear Data Flow](documentation/flightgear-data-flow.md) - Property tree and system integration
+
+**Nasal Scripting:**
+- [Radar System](documentation/nasal/RADAR.md) - AWG-9 radar implementation and RCS calculation
+- [Dual Control](documentation/nasal/DUAL_CONTROL.md) - Pilot/RIO multiplayer synchronisation
+- [Fallback Modules](documentation/nasal/FALLBACK.md) - Compatibility layer for older FlightGear versions
+
+**Project:**
+- [Release Notes](documentation/release-notes.md) - V1.12 changelog
+- [Project History](documentation/project-history.md) - Full development timeline
 
 ## Project History
 
-Development began in August 2014 with the goal of creating an accurate F-14 simulation based on publicly available technical documentation rather than estimation. The aerodynamic model, flight control system, and engine models are all derived from specific NASA technical memoranda, AFWAL wind tunnel reports, and NATOPS flight manuals.
+The F-14 Tomcat for FlightGear was created by Enrique Medina and Alexis Bory (xii) in February 2008. Alexis developed the original 3D model, cockpit instruments, Nasal radar system, HUD, fuel system, sounds, liveries, and dual-control multiplayer support over 460 commits through 2012, using a YASim flight dynamics model. Anders Gidenstam contributed the DualControl framework and Stuart Buchanan added air-to-air refueling support during this period.
+
+After a quiet period in 2013, Richard Harrison took over as primary developer in 2014 with the goal of creating an accurate simulation based on publicly available technical documentation rather than estimation. The YASim FDM was replaced with a JSBSim aerodynamic model built from NASA/AFWAL wind tunnel data (AFWAL-TR-80-3141), and engine thrust tables were derived from NASA TM-104326. The F-14A variant with TF-30 engines and compressor stall modelling was added in 2015. onox contributed canopy effects, flight recorder enhancements, and catapult launch fixes during 2014-2016.
+
+Nikolai V. Chr joined as a major contributor in 2016, bringing missile guidance systems (AIM-9, AIM-7, AIM-54), the damage model, RWR, RCS database, and an anti-cheat system. Joshua Davidson implemented the initial Approach Power Compensator in 2019, and V1.9 was released in June 2019.
+
+From 2020-2021 the aircraft underwent a major overhaul. Richard Harrison rewrote the flight control system based on NASA TM-81833, implementing the pitch, roll, and yaw SAS channels with new aerodynamic data from NASA TM-X-62306. Nikolai V. Chr rebuilt the weapons and damage system using the Emesary publish-subscribe framework for multiplayer communication, added the station management system, CCIP bombing pipper, dynamic launch zones on the HUD, and semi-active illumination for missiles. Megaf contributed IFF channel selection and datalink integration. The V2.0 RC1 was released in January 2021.
+
+Development continued through 2022-2024 with radar upgrades, further weapons refinements, new liveries ("Thief of Baghdad" by VooDoo3, VF-1 WolfPack), compatibility fixes, and shared file auto-update integration with the [OPRF](https://github.com/NikolaiVChr/OpRedFlag) systems. Release 1.12 was published in February 2026 with comprehensive technical documentation covering all major aircraft systems.
+
+## Release Notes
+
+### Current Release: V1.12 (February 2026)
+
+**Highlights:**
+
+- Completely rewritten Flight Control System (FCS) based on NASA TM-81833
+- Major aerodynamic model updates with new data from NASA TM-X-62306
+- Emesary-based weapons and damage system for improved multiplayer combat
+- AWG-9 radar upgrades with datalink and IFF integration
+- New HUD features including dynamic launch zones and CCIP for bombs
+- RIO station improvements with functional DDI, datalink, and IFF panels
+- F-110-GE-400 engine model improvements (thrust, oil simulation)
+- DLC implementation (original and AFC MOD 735)
+- Improved damage model for flaps, slats, wing bending
+- New liveries: "Thief of Baghdad", VF-1 WolfPack
+- Comprehensive technical documentation for all major systems
+
+**Compatibility:** FlightGear 2017.3+
+
+For the complete changelog, see [Release Notes](documentation/release-notes.md).
+
+---
 
 ## Contributors
 
@@ -26,7 +76,7 @@ Development began in August 2014 with the goal of creating an accurate F-14 simu
 - Nikolai V. Chr - Missile guidance systems (AIM-9/AIM-7/AIM-54), damage model, Emesary multiplayer integration, radar systems, RWR, datalink, IFF, HUD dynamic launch zones, CCIP, RCS database, station manager, fire control, anti-cheat system (337 commits, 2016-present)
 
 **Contributors:**
-- Joshua Davidson - Approach Power Compensator (APC) implementation
+- Joshua Davidson - Version checking, route manager advance code
 - onox - Air-to-air refueling, canopy effects, flight recorder enhancements
 - Megaf - Datalink integration, IFF channel selection, combat log window
 - SammySkycrafts - AIM-9 bore mode fix, MP RIO fixes, damage system updates
@@ -326,13 +376,7 @@ When damage is enabled:
 The following items are marked as TODO in the codebase for future development:
 
 ### Flight Control System
-- Maneuver flaps via thumbwheel (f-14-fcs.xml)
-- Autopilot emergency disengage paddle (cadc.nas)
-- DLC weight-on-wheels condition (spoilers.nas)
-
-### Fuel & Engine Systems
-- Engine fuel shutoff emergency handles (fuel-system.nas)
-- External stores WOW requirement (ext_stores.nas)
+- Autopilot emergency disengage paddle should disengage APC (cadc.nas)
 
 ### Weapons System (fox2.nas)
 - Side wind compensation for rail heading offset
@@ -383,30 +427,6 @@ Detailed aerodynamic data sources: http://zaretto.com/content/f-14-aerodynamic-d
 
 ---
 
-## Release Notes
-
-For detailed release notes, see [RELEASE_NOTES.md](RELEASE_NOTES.md).
-
-### Current Release: V1.12 (January 2026)
-
-**Highlights:**
-
-- Completely rewritten Flight Control System (FCS) based on NASA TM-81833
-- Major aerodynamic model updates with new data from NASA TM-X-62306
-- Emesary-based weapons and damage system for improved multiplayer combat
-- AWG-9 radar upgrades with datalink and IFF integration
-- New HUD features including dynamic launch zones and CCIP for bombs
-- RIO station improvements with functional DDI, datalink, and IFF panels
-- F-110-GE-400 engine model improvements (thrust, oil simulation)
-- DLC implementation (original and AFC MOD 735)
-- Improved damage model for flaps, slats, wing bending
-- New liveries: "Thief of Baghdad", VF-1 WolfPack
-
-**Compatibility:** FlightGear 2017.3+
-
-See [RELEASE_NOTES.md](RELEASE_NOTES.md) for the complete changelog.
-
----
 
 ## License
 

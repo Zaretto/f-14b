@@ -305,7 +305,6 @@ This release includes contributions from multiple developers:
 - Nikolai V. Chr - Missile systems, damage model, Emesary MP integration, radar, RWR, datalink, IFF, HUD features, RCS database, station manager, fire control (2016-present)
 
 **Contributors:**
-- Joshua Davidson (APC implementation)
 - onox (AAR, canopy effects, flight recorder)
 - Megaf (datalink, IFF, combat log)
 - SammySkycrafts (AIM-9 fixes, MP RIO, damage system)
