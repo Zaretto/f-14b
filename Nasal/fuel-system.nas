@@ -80,7 +80,7 @@ var max_instant_dumprate_lbs = 1.45; # max instantaneous qty for low frame rates
 var refuel_rate_gpm = 450; # max refuel rate in gallons per minute at 50 psi pressure
 
 
-var left_shut_off = 0; # TODO: Engine fuel shutoff emergency handles
+var left_shut_off = 0;
 var right_shut_off = 0;
 
 

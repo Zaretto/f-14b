@@ -76,9 +76,9 @@ var computeSpoilers = func {
 	# If wings are swept back, or the aircraft is on the ground, Direct Lift
 	# Control is deactivated
 	if (WingSweep > 0.34) {
-		DLC = 0; # TODO: add a condition on weight on wheels
+		DLC = 0;
 	} else {
-		DLC = getprop("controls/flight/DLC")
+		DLC = getprop("controls/flight/DLC") and !getprop("gear/gear[1]/wow") and !getprop("gear/gear[2]/wow");
 	}
 
 	#spoilers are depressed -4 degrees when flaps are out

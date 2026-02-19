@@ -18,7 +18,7 @@
                 </font>
             </content>
             <model-content n="4">
-                <text>V1.12 2024-01-06</text>
+                <text>V1.12 2026-01-17</text>
                 <font>
                     <size>0.03</size>
                     <alignment>left-bottom</alignment>
@@ -41,7 +41,7 @@
                 <y>0.895</y>
             </model-content>
             <model-content>
-                <text>&#169;2024 Richard Harrison   rjh@zaretto.com</text>
+                <text>&#169;2026 Richard Harrison   rjh@zaretto.com</text>
                 <font>
                     <alignment>left-bottom</alignment>
                     <size>0.035</size>

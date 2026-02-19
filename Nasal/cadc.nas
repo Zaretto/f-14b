@@ -9,7 +9,7 @@
 #                - keystroke "a" (toggle)
 #                - WoW
 #                - throttle levers at ~ idle or MIL
-#                - autopilot emer disengage padle (TODO)
+#                - autopilot emer disengage paddle (TODO)
 # Original F-14B : (YASim) APC is for display purposes only 
 #                  (JSBSim) Richard Harrison  (rjh@zaretto.com) APC system in the FDM
 
