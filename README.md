@@ -22,6 +22,7 @@ A high-fidelity simulation of the Grumman F-14 Tomcat for FlightGear, featuring 
 - [FlightGear Data Flow](documentation/flightgear-data-flow.md) - Property tree and system integration
 
 **Nasal Scripting:**
+- [Nasal Modules](documentation/nasal/NASAL_MODULES.md) - All root Nasal scripts with JSBSim/YASim notes
 - [Radar System](documentation/nasal/RADAR.md) - AWG-9 radar implementation and RCS calculation
 - [Dual Control](documentation/nasal/DUAL_CONTROL.md) - Pilot/RIO multiplayer synchronisation
 - [Fallback Modules](documentation/nasal/FALLBACK.md) - Compatibility layer for older FlightGear versions

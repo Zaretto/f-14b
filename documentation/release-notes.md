@@ -1,7 +1,9 @@
 # F-14 Tomcat Release Notes - v1.12
 
+**Documentation:** http://zaretto.com/f-14
 **Release Date:** 2026-02-18
 **Previous Version:** v1.11 (2019-12-19)
+**FlightGear Compatibility:** 2017.3+
 
 ---
 
@@ -55,6 +57,10 @@ The weapons and damage model has been completely rewritten to use the [OPRF appr
 - Event log system records combat engagements with timestamps and callsigns
 - Missile Approach Warning (MAW) and Missile Launch Warning (MLW) alerts with RWR integration
 - Persistent craters visible over multiplayer when damage is enabled
+- Hit smoke visualisation over multiplayer
+- Anti-cheat system (preventive rather than reactive)
+- Radar lock spike notifications to multiplayer aircraft
+- Flare model improvements
 
 ### Station Management System
 
@@ -156,10 +162,13 @@ Extensive aerodynamic data updates from NASA technical memoranda.
 - Tidied up and reformatted aerodynamic data tables
 - Updated F-14A aerodynamic model from F-14B changes
 - Landing gear aerodynamic data updated
+- Low speed handling and power/drag tuning improvements
+- Auxiliary flaps system implementation
 
 ### APC (Approach Power Compensator) Rewrite
 
 Complete rewrite of the Approach Power Compensator for improved carrier approach handling.
+- Improved DLC range and authority
 
 ### Carrier Operations
 
@@ -175,8 +184,9 @@ Improved carrier approach and recovery systems.
 - AIM-54 now supports maddog (no-lock) firing (patch by bobdotcom)
 - AIM-54 dives on target sooner to avoid overshooting
 - AIM-54 self-destruct time increased
+- AIM-54 increased G-force capability
 - AIM-54 minimum range increased with pitbull point 3nm earlier
-- AIM-54 midcourse guidance changed to sample-guided until terminal phase
+- AIM-54 midcourse guidance changed to inertial, sample-guided until terminal phase (harder to spoof)
 - AIM-9 now uses proportional navigation (PN) guidance law
 - AIM-9 no longer reacquires after losing lock (realistic seeker beam width)
 - AIM-9 bore loop fix allowing fire without radar lock
@@ -208,12 +218,17 @@ Multiple rounds of missile guidance and damage code updates.
 - Pilot RWR lines reduced floating over display
 - Fix radar database path on macOS and Linux
 - Better check to prevent aircraft being designated as ships at low-elevation airports
+- Fixed target lock functionality over multiplayer
 
 ### Engine Improvements
 
 - F-110-GE-400 revised thrust data
 - F-110-GE-400 fuel and oil pressure/temperature instruments
 - TF-30 (F-14A) fuel and oil temperature/pressure instruments added
+- TF-30 fixed channel names
+- Compressor stall malfunction modelling (F-14A only)
+- Improved oil temperature and pressure modelling
+- Master caution system converted to property rules
 - Engine Z position tuned
 - Minor engine fixes
 
@@ -230,6 +245,12 @@ Multiple rounds of missile guidance and damage code updates.
 - Fuel quantity switch inversion corrected
 - Fuel probe cockpit switch fixed
 - G meter and displays panel fixed
+- Radar altimeter completely redone based on NATOPS
+- Airspeed/Mach indicator improvements
+- TID heading indication fix for radar returns
+- Fixed DEST CRS and GS inverted HUD display
+- Fixed HUD Mach display
+- New method for checking weapon ready status
 
 ### Exterior Lighting
 
@@ -282,6 +303,9 @@ Fixed stall warning system.
 - FlightGear 2020.4 compatibility (sound conditionals)
 - Walk views disabled to avoid conflicts
 - Nasal fallback module updates
+- XML/XSLT/XSD validation fixes
+- Auto-updater for shared files (damage, missile-code, etc.)
+- Removed unused code and cleaned up initialisation
 
 ### README Rewrite
 
@@ -337,21 +361,48 @@ The README has been rewritten as a comprehensive technical overview of the aircr
 - AOA indexer logic fixes
 - Fix that master arm alone would not enable gun firing
 - F-14 branding rework
+- Fix fuel restore behaviour
+- Fixed smoke trail expressions
 
 ---
 
 ## Contributors
 
-- **Richard Harrison** — Primary author: FCS, aerodynamics, APC, cockpit, engines, carrier ops, documentation
-- **Nikolai V. Chr** — Weapons, missile code, damage system, Emesary integration, radar, RWR, station management
+This release includes contributions from multiple developers:
+
+**Original Author:**
+- **Alexis Bory (xii)** — Created the original F-14B model: 3D cockpit, instruments, radar, HUD, weapons, fuel system, YASim FDM (2008–2012)
+
+**Primary Author:**
+- **Richard Harrison** — JSBSim FDM from NASA/AFWAL data, FCS, APC, cockpit, engines, carrier ops, documentation (2014–present)
+
+**Major Contributor:**
+- **Nikolai V. Chr** — Missile systems, damage model, Emesary MP integration, radar, RWR, datalink, IFF, HUD features, RCS database, station manager, fire control (2016–present)
+
+**Contributors:**
 - **SammySkycrafts** — AIM-9 bore loop fix, damage updates, MP RIO fix
 - **Megaf** — IFF, datalink, combat log window, sound conditionals
 - **Chris Ringeval** — Sound conditional properties for FlightGear 2020.4
 - **Serafeim Liakos (VooDoo3)** — "Thief of Baghdad" livery
 - **Thorsten Renk** — Bomb crater effects
+- **onox** — AAR, canopy effects, flight recorder
+- **Stuart Buchanan** — AAR support
+- **J Maverick 16** — RCS data, Top Gun livery update
+- **Paccalin** — Missile code
+- **Spectre** — Top Gun livery
+
+And all other contributors and testers.
 
 ---
 
 ## Known Issues
 
-None identified at this time.
+See the issue tracker at: https://github.com/Zaretto/fg-aircraft/issues
+
+---
+
+## Upgrade Notes
+
+- Saved fuel/loadout configurations may need to be recreated
+- Some keyboard bindings have changed — check f-14-common.xml
+- Users of older FlightGear versions should verify fallback module compatibility
