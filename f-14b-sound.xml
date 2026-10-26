@@ -32,7 +32,6 @@
                     <value>9</value>
                 </greater-than>
             </condition>
-            <reference-dist>100</reference-dist>
             <volume>
                 <factor>0.4</factor>
             </volume>
@@ -53,7 +52,6 @@
                     <value>1</value>
                 </equals>
             </condition>
-            <reference-dist>100</reference-dist>
             <volume>
                 <factor>0.4</factor>
             </volume>
@@ -108,7 +106,6 @@
                 <outer-angle>360</outer-angle>
                 <outer-gain>0.905</outer-gain>
             </orientation>
-            <reference-dist>100</reference-dist>
             <volume>
                 <factor>1</factor>
             </volume>
@@ -141,7 +138,6 @@
                 <outer-angle>360</outer-angle>
                 <outer-gain>0.905</outer-gain>
             </orientation>
-            <reference-dist>100</reference-dist>
             <volume>
                 <factor>1</factor>
             </volume>
@@ -235,7 +231,7 @@
             <mode>looped</mode>
             <pitch>
                 <property>engines/engine[0]/n1</property>
-                <ofset>0.2</ofset>
+                <offset>0.2</offset>
                 <factor>0.01</factor>
             </pitch>
             <volume>
@@ -271,7 +267,7 @@
             </condition>
             <pitch>
                 <property>engines/engine[0]/n2</property>
-                <ofset>0</ofset>
+                <offset>0</offset>
                 <factor>0.01</factor>
             </pitch>
             <volume>
@@ -307,7 +303,7 @@
             </condition>
             <pitch>
                 <property>engines/engine[1]/n1</property>
-                <ofset>0.2</ofset>
+                <offset>0.2</offset>
                 <factor>0.01</factor>
             </pitch>
             <volume>
@@ -343,7 +339,7 @@
             </condition>
             <pitch>
                 <property>engines/engine[1]/n2</property>
-                <ofset>0</ofset>
+                <offset>0</offset>
                 <factor>0.01</factor>
             </pitch>
             <volume>
@@ -413,10 +409,11 @@
             <volume>
                 <factor>0.0015</factor>
                 <property>engines/engine[1]/n1</property>
+<max>0.4</max>
             </volume>
             <position>
                 <x>3</x>
-                <y>-1.0</y>
+                <y>1.0</y>
                 <z>-0.37</z>
             </position>
             <orientation>
@@ -496,7 +493,7 @@
             </volume>
             <position>
                 <x>3</x>
-                <y>-1.0</y>
+                <y>1.0</y>
                 <z>-0.37</z>
             </position>
             <orientation>
@@ -563,7 +560,7 @@
             </volume>
             <position>
                 <x>3</x>
-                <y>-1.0</y>
+                <y>1.0</y>
                 <z>-0.37</z>
             </position>
             <orientation>
@@ -596,7 +593,7 @@
             </volume>
             <position>
                 <x>3</x>
-                <y>1.0</y>
+                <y>-1.0</y>
                 <z>-0.37</z>
             </position>
             <orientation>
@@ -671,7 +668,7 @@
 -->
             <position>
                 <x>3</x>
-                <y>1.0</y>
+                <y>-1.0</y>
                 <z>-0.37</z>
             </position>
             <orientation>
@@ -1076,8 +1073,8 @@
                 </greater-than>
             </condition>
             <position>
-                <x>1.2</x>
-                <y>1.0</y>
+                <x>-1.2</x>
+                <y>0.0</y>
                 <z>-0.6</z>
             </position>
             <pitch>
@@ -1118,7 +1115,7 @@
             </condition>
             <position>
                 <x>1.2</x>
-                <y>1.0</y>
+                <y>-1.0</y>
                 <z>-0.6</z>
             </position>
             <volume>
