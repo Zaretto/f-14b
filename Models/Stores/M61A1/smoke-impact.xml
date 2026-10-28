@@ -12,7 +12,7 @@
 		<type>scale</type>
 		<object-name>puff</object-name>
 		<use-personality>true</use-personality>
-		<property>sim/time/elapsed-sec</property>
+		<property>/sim/time/elapsed-sec</property>
 		<x-min>0.3</x-min>
 		<y-min>0.3</y-min>
 		<z-min>0.3</z-min>
@@ -25,7 +25,7 @@
 		<type>blend</type>
 		<object-name>puff</object-name>
 		<use-personality>true</use-personality>
-		<property>sim/time/elapsed-sec</property>
+		<property>/sim/time/elapsed-sec</property>
 		<factor>0.035</factor>
 		<min>0.05</min>
 		<max>1.0</max>
@@ -47,7 +47,7 @@
 		<type>blend</type>
 		<object-name>disk</object-name>
 		<use-personality>true</use-personality>
-		<property>sim/time/elapsed-sec</property>
+		<property>/sim/time/elapsed-sec</property>
 		<factor>3</factor>
 		<min>0.05</min>
 		<max>1.0</max>

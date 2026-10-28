@@ -12,7 +12,7 @@
     <type>scale</type>
     <object-name>puff</object-name>
     <use-personality>true</use-personality>
-    <property>sim/time/elapsed-sec</property>
+    <property>/sim/time/elapsed-sec</property>
     <factor>0.5</factor>
     <x-min>3</x-min>
     <y-min>3</y-min>
@@ -26,7 +26,7 @@
     <type>blend</type>
     <object-name>puff</object-name>
     <use-personality>true</use-personality>
-    <property>sim/time/elapsed-sec</property>
+    <property>/sim/time/elapsed-sec</property>
     <factor>0.15</factor>
     <offset>0</offset>
     <min>0.1</min>
