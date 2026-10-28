@@ -7,7 +7,7 @@
 
 ## Origins (February – December 2008)
 
-The F-14 Tomcat for FlightGear was created on 19 February 2008 by Enrique Medina, whose first commit described it as "A brand new Tomcat, early alpha, comments are welcome." The initial commits, made via Alexis Bory's repository account, established the YASim flight dynamics model, Nasal-based SAS, and basic textures.
+The F-14 Tomcat for FlightGear was created on 19 February 2008 by Enrique Laso (Flyingtoaster), whose first commit described it as "A brand new Tomcat, early alpha, comments are welcome." The initial commits, made via Alexis Bory's repository account, added the external 3D model (`Models/f14.ac`) and its textures, and established the YASim flight dynamics model and Nasal-based SAS.
 
 Alexis Bory (xii) rapidly built out the aircraft over the course of 2008 with 232 commits, creating:
 
@@ -299,14 +299,14 @@ Nikolai V. Chr delivered a major combined update installing:
 
 | Contributor | Commits | Period | Primary Contributions |
 |-------------|---------|--------|----------------------|
-| Alexis Bory (xii) | ~462 | 2008–2012 | Original aircraft, 3D model, YASim FDM, cockpit instruments, radar, HUD, fuel system, sounds, liveries, dual control |
+| Alexis Bory (xii) | ~462 | 2008–2012 | Original aircraft, YASim FDM development, cockpit instruments, radar, HUD, fuel system, sounds, liveries, dual control |
 | Richard Harrison | ~613 | 2014–present | JSBSim FDM (NASA/AFWAL data), FCS, SAS, APC, engines, cockpit, carrier ops, documentation |
 | Nikolai V. Chr | ~336 | 2016–present | Missile guidance (AIM-9/7/54), damage model, Emesary MP integration, radar, RWR, RCS, datalink, IFF, HUD DLZ/CCIP, station manager, fire control |
 | Joshua Davidson | 8 | 2019 | Approach Power Compensator implementation |
 | onox | 7 | 2014–2016 | Canopy effects, flight recorder, catapult fix, AAR over MP |
 | Megaf | 6 | 2021 | IFF channel selection, datalink, combat log window |
 | SammySkycrafts | 4 | 2022 | AIM-9 bore mode fix, damage updates, MP RIO fix |
-| Enrique Medina | — | 2008 | Initial FDM and textures (commits via Alexis Bory's account) |
+| Enrique Laso (Flyingtoaster) | — | 2008 | Original external 3D model and textures, initial YASim FDM and AFCS, flutter simulation, Red Rippers and Swordsmen liveries (commits via Alexis Bory's account) |
 | Stuart Buchanan | 1 | 2014 | Air-to-air refueling support |
 | Anders Gidenstam | 1 | 2010 | DualControl framework |
 | Chris Ringeval | 1 | 2023 | Sound conditional properties for FlightGear 2020.4 |
@@ -324,7 +324,7 @@ Nikolai V. Chr delivered a major combined update installing:
 
 | Version | Date | Milestone |
 |---------|------|-----------|
-| Alpha | February 2008 | Initial creation by Enrique Medina and Alexis Bory |
+| Alpha | February 2008 | Initial creation by Enrique Laso and Alexis Bory |
 | V1.9 | June 2019 | JSBSim FDM, F-14A variant, combat systems |
 | F-14A Aero 1.2 | January 2021 | Revised F-14A aerodynamic model |
 | V2.0 RC1 | January 2021 | FCS rewrite, Emesary weapons, station management |

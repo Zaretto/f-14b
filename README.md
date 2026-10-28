@@ -33,7 +33,7 @@ A high-fidelity simulation of the Grumman F-14 Tomcat for FlightGear, featuring 
 
 ## Project History
 
-The F-14 Tomcat for FlightGear was created by Enrique Medina and Alexis Bory (xii) in February 2008. Alexis developed the original 3D model, cockpit instruments, Nasal radar system, HUD, fuel system, sounds, liveries, and dual-control multiplayer support over 460 commits through 2012, using a YASim flight dynamics model. Anders Gidenstam contributed the DualControl framework and Stuart Buchanan added air-to-air refueling support during this period.
+The F-14 Tomcat for FlightGear was created by Enrique Laso (Flyingtoaster) and Alexis Bory (xii) in February 2008. Enrique built the original external 3D model, textures and initial YASim flight dynamics model. Alexis developed the cockpit instruments, Nasal radar system, HUD, fuel system, sounds, liveries, and dual-control multiplayer support over 460 commits through 2012, using a YASim flight dynamics model. Anders Gidenstam contributed the DualControl framework and Stuart Buchanan added air-to-air refueling support during this period.
 
 After a quiet period in 2013, Richard Harrison took over as primary developer in 2014 with the goal of creating an accurate simulation based on publicly available technical documentation rather than estimation. The YASim FDM was replaced with a JSBSim aerodynamic model built from NASA/AFWAL wind tunnel data (AFWAL-TR-80-3141), and engine thrust tables were derived from NASA TM-104326. The F-14A variant with TF-30 engines and compressor stall modelling was added in 2015. onox contributed canopy effects, flight recorder enhancements, and catapult launch fixes during 2014-2016.
 
@@ -69,7 +69,9 @@ For the complete changelog, see [Release Notes](documentation/release-notes.md).
 
 ## Contributors
 
-**Original Author:** Alexis Bory (xii) - Created the original F-14B model including 3D cockpit, instruments, radar, HUD, weapons systems, fuel system, and YASim FDM (2008-2012)
+**Original Authors:**
+- Enrique Laso (Flyingtoaster) - Original external 3D model and textures, initial YASim FDM and AFCS, early liveries (2008)
+- Alexis Bory (xii) - 3D cockpit, instruments, radar, HUD, weapons systems, fuel system, and development of the YASim FDM (2008-2012)
 
 **Primary Author:** Richard Harrison (rjh@zaretto.com) - JSBSim FDM based on NASA/AFWAL wind tunnel data, flight control system, engine models, and ongoing development (2014-present)
 

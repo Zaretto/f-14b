@@ -1,0 +1,82 @@
+FlightGear F-14 Tomcat (F-14A, F-14B)
+
+Licensed under the GNU General Public License, version 2 only. See COPYING and README.md.
+Files with their own licence header are licensed as stated in that header.
+
+Richard Harrison <rjh@zaretto.com>
+    Project lead (2014 onwards). JSBSim flight dynamics model from NASA/AFWAL
+    wind tunnel data, flight control system, CADC, APC, DLC, engine models,
+    systems, Emesary, radar, revisions to the external 3D model, and the
+    consolidated cockpit model.
+
+Alexis Bory (xii)
+    Original author (2008-2012). Cockpit and instruments, animations, radar,
+    HUD, weapons, fuel system, sounds, livery system, dual-control support
+    and development of the YASim flight dynamics model.
+
+Enrique Laso (Flyingtoaster)
+    Original external 3D model and textures, initial YASim flight dynamics
+    model and AFCS, flutter simulation, splash screen, and the early Red
+    Rippers and Swordsmen liveries (2008).
+
+Nikolai V. Chr.
+    Missile guidance (AIM-9, AIM-7, AIM-54), damage model, Emesary multiplayer
+    integration, radar, RWR, datalink, IFF, HUD launch zones, CCIP, RCS
+    database, station manager, fire control (2016 onwards).
+
+Anders Gidenstam
+    DualControl/f-14b-dual-control.nas, Systems/mp-network.nas
+
+Colin Geniet
+    Nasal/datalink.nas
+
+Justin Nicholson (pinto)
+    Nasal/iff.nas, Nasal/rcs.nas, Nasal/Radar/rcs.nas, multiplayer ignore
+    loop in Nasal/f-14b.nas.
+
+Slavutinsky Victor
+    Crash system from which Nasal/crash-and-stress.nas is developed.
+
+Fabien Barbier, Axel Paccalin
+    Missile and radar code (Nasal/fox2.nas, Nasal/Radar/radar-system.nas).
+
+Leto
+    Nasal/vector.nas, AWG-9 next target selection, station manager design.
+
+5H1N0B1
+    Station manager design (Nasal/station-manager.nas).
+
+Stuart Buchanan
+    Air-to-air refuelling support.
+
+Thorsten Renk
+    Bomb crater visual effects, carrier artwork used on the splash screen.
+
+Lato font, Fonts/Lato-Regular.ttf and Lato-Bold.ttf, is under the SIL Open Font
+License 1.1 and is not covered by the GPL.
+
+Other contributors, from the commit history:
+
+    Joshua Davidson
+    onox
+    Megaf
+    SammySkycrafts
+    Chris Ringeval
+    J Maverick 16
+    Serafeim Liakos
+    Thorsten Brehm
+    Frederic Bouvier
+    Curtis L. Olson
+    Melchior Franz
+    Erik Hofman
+    bobdotcom (AIM-54 maddog launch)
+    JanoP (YASim wing sweep computations)
+
+Liveries:
+
+    Flyingtoaster - Red Rippers, Swordsmen
+    Spectre - Top Gun, NSAWC Aggressor, VF-101 Grim Reapers, VF-2 Bounty Hunters
+    VooDoo3 - "Thief of Baghdad"
+
+Also thanked in the commit history for fixes and reports: Michael Smith,
+Jean Pellotier, VooDoo3.
