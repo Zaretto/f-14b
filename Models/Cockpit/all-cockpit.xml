@@ -6,7 +6,7 @@
     <animation>
         <type>translate</type>
         <object-name>rdr-elev-index</object-name>
-        <property>/controls/radar/elevation-deg</property>
+        <property>controls/radar/elevation-deg</property>
         <offset-m>-0.001</offset-m>
         <factor>0.00065</factor>
         <axis>
@@ -21,7 +21,7 @@
     <animation>
         <type>translate</type>
         <object-name>rdr-elev-index.001</object-name>
-        <property>/instrumentation/radar/antennae-deg</property>
+        <property>instrumentation/radar/antennae-deg</property>
         <offset-m>-0.001</offset-m>
         <factor>0.00065</factor>
         <axis>
@@ -1419,7 +1419,7 @@
                     </greater-than>
                 </not>
                 <less-than>
-                    <property>/instrumentation/airspeed-indicator/indicated-mach</property>
+                    <property>instrumentation/airspeed-indicator/indicated-mach</property>
                     <value>0.4</value>
                 </less-than>
             </or>
@@ -1948,7 +1948,7 @@
                     <property>fdm/jsbsim/systems/electrics/ac-essential-bus1</property>
                     <value>0</value>
                 </equals>
-                <property>/instrumentation/altimeter/setting-stby</property>
+                <property>instrumentation/altimeter/setting-stby</property>
             </or>
         </condition>
     </animation>
@@ -1956,7 +1956,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>drum-inhg-1</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>10</factor>
         <offset>-0.01</offset>
         <axis>
@@ -1968,7 +1968,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>drum-inhg-2</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>1</factor>
         <offset>-0.1</offset>
         <step>0.1</step>
@@ -1982,7 +1982,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>drum-inhg-3</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>0.1</factor>
         <offset>-1</offset>
         <step>1</step>
@@ -1996,7 +1996,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>drum-inhg-4</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>0.01</factor>
         <offset>-10</offset>
         <step>10</step>
@@ -2011,7 +2011,7 @@
     <animation>
         <type>knob</type>
         <object-name>barometric-pressure-knob</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>0</factor>
         <axis>
             <object-name>barometric-pressure-knob-axis</object-name>
@@ -2019,7 +2019,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/instrumentation/altimeter/setting-inhg</property>
+                <property>instrumentation/altimeter/setting-inhg</property>
                 <factor>0.01</factor>
                 <min>27.90</min>
                 <max>31.40</max>
@@ -2030,7 +2030,7 @@
     <animation>
         <type>knob</type>
         <object-name>stby-reset-knob</object-name>
-        <property>/instrumentation/altimeter/setting-stby</property>
+        <property>instrumentation/altimeter/setting-stby</property>
         <factor>-90</factor>
         <axis>
             <object-name>stby-reset-knob-axis</object-name>
@@ -2038,7 +2038,7 @@
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/instrumentation/altimeter/setting-stby</property>
+                <property>instrumentation/altimeter/setting-stby</property>
                 <factor>1</factor>
                 <min>0</min>
                 <max>1</max>
@@ -7504,7 +7504,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>3</value>
             </equals>
         </condition>
@@ -7518,7 +7518,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>6</value>
             </equals>
         </condition>
@@ -7651,7 +7651,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
         <object-name>hr_miles-drum-0</object-name>
         <condition>
             <less-than>
-                <property>/instrumentation/radar/radar2-range-actual</property>
+                <property>instrumentation/radar/radar2-range-actual</property>
                 <value>3</value>
             </less-than>
         </condition>
@@ -7659,7 +7659,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>hr_miles-drum-1</object-name>
-        <property>/instrumentation/radar/radar2-range-actual</property>
+        <property>instrumentation/radar/radar2-range-actual</property>
         <factor>0.1</factor>
         <offset>-1</offset>
         <step>1</step>
@@ -7671,7 +7671,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>hr_miles-drum-2</object-name>
-        <property>/instrumentation/radar/radar2-range-actual</property>
+        <property>instrumentation/radar/radar2-range-actual</property>
         <factor>0.01</factor>
         <offset>-10</offset>
         <step>10</step>
@@ -7683,7 +7683,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>hr_miles-drum-3</object-name>
-        <property>/instrumentation/radar/radar2-range-actual</property>
+        <property>instrumentation/radar/radar2-range-actual</property>
         <factor>0.001</factor>
         <offset>-100</offset>
         <step>100</step>
@@ -19908,7 +19908,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <property>fdm/jsbsim/systems/electrics/ac-left-main-bus</property>
                 <value>0</value>
             </greater-than>
-            <property>/sim/model/f-14b/instrumentation/radar-awg-9/ant-trk-light</property>
+            <property>sim/model/f-14b/instrumentation/radar-awg-9/ant-trk-light</property>
         </condition>
     </animation>
     <animation>
@@ -20039,7 +20039,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>2</value>
             </equals>
         </condition>
@@ -20067,7 +20067,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>1</value>
             </equals>
         </condition>
@@ -20095,7 +20095,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>4</value>
             </equals>
         </condition>
@@ -20123,7 +20123,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>5</value>
             </equals>
         </condition>
@@ -20151,7 +20151,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>6</value>
             </equals>
         </condition>
@@ -20183,7 +20183,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>7</value>
             </equals>
         </condition>
@@ -20211,7 +20211,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>3</value>
             </equals>
         </condition>
@@ -20237,12 +20237,12 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>knob</type>
         <object-name>radar-brightness-knob</object-name>
-        <property>/sim/model/f-14b/controls/radar-awg-9/brightness</property>
+        <property>sim/model/f-14b/controls/radar-awg-9/brightness</property>
         <factor>180</factor>
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/sim/model/f-14b/controls/radar-awg-9/brightness</property>
+                <property>sim/model/f-14b/controls/radar-awg-9/brightness</property>
                 <factor>0.1</factor>
                 <min>0</min>
                 <max>1</max>
@@ -23131,7 +23131,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>asi-rio-mach-scale</object-name>
-        <property>/instrumentation/airspeed-indicator/indicated-mach</property>
+        <property>instrumentation/airspeed-indicator/indicated-mach</property>
         <condition>
             <greater-than>
                 <property>fdm/jsbsim/systems/electrics/ac-essential-bus1</property>
@@ -23532,7 +23532,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                     <property>fdm/jsbsim/systems/electrics/ac-essential-bus1</property>
                     <value>0</value>
                 </equals>
-                <property>/instrumentation/altimeter/setting-stby</property>
+                <property>instrumentation/altimeter/setting-stby</property>
             </or>
         </condition>
     </animation>
@@ -23540,7 +23540,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>fa_drum-inhg-1</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>10</factor>
         <offset>-0.01</offset>
         <axis>
@@ -23552,7 +23552,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>fa_drum-inhg-2</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>1</factor>
         <offset>-0.1</offset>
         <step>0.1</step>
@@ -23566,7 +23566,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>fa_drum-inhg-3</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>0.1</factor>
         <offset>-1</offset>
         <step>1</step>
@@ -23580,7 +23580,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>fa_drum-inhg-4</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>0.01</factor>
         <offset>-10</offset>
         <step>10</step>
@@ -23595,7 +23595,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>knob</type>
         <object-name>fa_barometric-pressure-knob</object-name>
-        <property>/instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-inhg</property>
         <factor>0</factor>
         <axis>
             <object-name>fa_barometric-pressure-knob-axis</object-name>
@@ -23603,7 +23603,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/instrumentation/altimeter/setting-inhg</property>
+                <property>instrumentation/altimeter/setting-inhg</property>
                 <factor>0.01</factor>
                 <min>27.90</min>
                 <max>31.40</max>
@@ -23614,7 +23614,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>knob</type>
         <object-name>fa_stby-reset-knob</object-name>
-        <property>/instrumentation/altimeter/setting-stby</property>
+        <property>instrumentation/altimeter/setting-stby</property>
         <factor>-90</factor>
         <axis>
             <object-name>fa_stby-reset-knob-axis</object-name>
@@ -23622,7 +23622,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/instrumentation/altimeter/setting-stby</property>
+                <property>instrumentation/altimeter/setting-stby</property>
                 <factor>1</factor>
                 <min>0</min>
                 <max>1</max>
@@ -23725,7 +23725,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-1-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[1]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[1]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-1-sw-axis</object-name>
@@ -23750,7 +23750,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-2-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[2]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[2]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-2-sw-axis</object-name>
@@ -23775,7 +23775,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-3-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[3]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[3]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-3-sw-axis</object-name>
@@ -23800,7 +23800,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-4-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[4]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[4]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-4-sw-axis</object-name>
@@ -23825,7 +23825,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-5-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[5]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[5]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-5-sw-axis</object-name>
@@ -23850,7 +23850,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-6-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[6]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[6]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-6-sw-axis</object-name>
@@ -23875,7 +23875,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-7-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[7]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[7]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-7-sw-axis</object-name>
@@ -23900,7 +23900,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>rotate</type>
         <object-name>sta-8-sw</object-name>
-        <property>/sim/model/f-14b/controls/armament/station-selector[8]</property>
+        <property>sim/model/f-14b/controls/armament/station-selector[8]</property>
         <factor>30</factor>
         <axis>
             <object-name>sta-8-sw-axis</object-name>
@@ -24544,12 +24544,12 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>knob</type>
         <object-name>TID-brightness-knob</object-name>
-        <property>/sim/model/f-14b/controls/TID/brightness</property>
+        <property>sim/model/f-14b/controls/TID/brightness</property>
         <factor>180</factor>
         <action>
             <binding>
                 <command>property-adjust</command>
-                <property>/sim/model/f-14b/controls/TID/brightness</property>
+                <property>sim/model/f-14b/controls/TID/brightness</property>
                 <factor>0.1</factor>
                 <min>0</min>
                 <max>1</max>
@@ -24870,7 +24870,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>3</value>
             </equals>
         </condition>
@@ -24884,7 +24884,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
                 <value>0</value>
             </greater-than>
             <equals>
-                <property>/sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
+                <property>sim/model/f-14b/instrumentation/radar-awg-9/wcs-mode</property>
                 <value>6</value>
             </equals>
         </condition>
@@ -25005,7 +25005,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
         <object-name>rtr_miles-drum-0</object-name>
         <condition>
             <less-than>
-                <property>/instrumentation/radar/radar2-range-actual</property>
+                <property>instrumentation/radar/radar2-range-actual</property>
                 <value>3</value>
             </less-than>
         </condition>
@@ -25013,7 +25013,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>rtr_miles-drum-1</object-name>
-        <property>/instrumentation/radar/radar2-range-actual</property>
+        <property>instrumentation/radar/radar2-range-actual</property>
         <factor>0.1</factor>
         <offset>-1</offset>
         <step>1</step>
@@ -25025,7 +25025,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>rtr_miles-drum-2</object-name>
-        <property>/instrumentation/radar/radar2-range-actual</property>
+        <property>instrumentation/radar/radar2-range-actual</property>
         <factor>0.01</factor>
         <offset>-10</offset>
         <step>10</step>
@@ -25037,7 +25037,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
     <animation>
         <type>textranslate</type>
         <object-name>rtr_miles-drum-3</object-name>
-        <property>/instrumentation/radar/radar2-range-actual</property>
+        <property>instrumentation/radar/radar2-range-actual</property>
         <factor>0.001</factor>
         <offset>-100</offset>
         <step>100</step>
@@ -33463,7 +33463,7 @@ Note Only stores loaded on BRU−32 parent racks can be AUX jettisoned.
         <type>rotate</type>
         <object-name>re_tid</object-name>
         <factor>-1</factor>
-        <property>/orientation/heading-magnetic-deg</property>
+        <property>orientation/heading-magnetic-deg</property>
         <axis>
             <object-name>h_compass-rose-axis</object-name>
         </axis>
